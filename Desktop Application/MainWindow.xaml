@@ -1,0 +1,67 @@
+﻿<Window x:Class="BaldursGateInworld.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:component="clr-namespace:BaldursGateInworld.Component"
+        mc:Ignorable="d"
+        Closing="Window_Closing"
+        Title="Baldur's Gate 3 Inworld" Height="600" Width="399" MaxWidth="400" MaxHeight="600" Background="#330D1C2F" ResizeMode="CanMinimize" WindowStyle="None" AllowsTransparency="True">
+    <Grid Background="#F90D1C2F" Margin="0.3,0,0,0" Width="400">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <component:TitleBar Margin="0,0,0,0" Grid.Row="0"/>
+        <Grid Grid.Row="1" Margin="0,0,0,-21">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="199*"/>
+                <ColumnDefinition Width="201*"/>
+            </Grid.ColumnDefinitions>
+            <Image Margin="68,23,68,0" VerticalAlignment="Top" Source="/Resource/logo-bg3.png" RenderTransformOrigin="0.469,0.486" Height="149" Grid.ColumnSpan="2"/>
+            <!-- Key -->
+            <Label Content="Inworld API Key" HorizontalAlignment="Left" Margin="31,214,0,0" VerticalAlignment="Top" Foreground="#FFE6E1C2" Padding="5,5,5,5" FontFamily="Aldine721 BT" Background="{x:Null}" FontSize="16"/>
+            <Button x:Name="APIKeyEye" Content="" Style="{StaticResource HideStyle}" HorizontalAlignment="Left" Margin="161,248,0,0" VerticalAlignment="Top" Height="18" Width="20" BorderBrush="#00707070" Click="APIKeyEye_Click" Grid.Column="1" />
+            <PasswordBox x:Name="APIKeyPassBox" HorizontalAlignment="Left" Margin="31,243,0,0" PasswordChanged="APIKeyPassBox_PasswordChanged" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="324" BorderBrush="Transparent" Height="28" FontFamily="Aldine721 BT" SelectionBrush="#FFFFF227" Foreground="#FFFAFAFA" Padding="30,0,0,0" Grid.ColumnSpan="2">
+                <PasswordBox.Background>
+                    <ImageBrush ImageSource="pack://application:,,,/Resource/Images/UI/textinput_box.png" TileMode="None"/>
+                </PasswordBox.Background>
+            </PasswordBox>
+            <TextBox x:Name="APIKeyBox" HorizontalAlignment="Left" Margin="31,243,0,0" TextWrapping="Wrap" Text="{Binding Key, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="324" BorderBrush="Transparent" Height="28" FontFamily="Aldine721 BT" SelectionBrush="#FFFFF227" Foreground="#FFFAFAFA" Padding="30,0,0,0" Grid.ColumnSpan="2">
+                <TextBox.Background>
+                    <ImageBrush ImageSource="/Resource/Images/UI/textinput_box.png" TileMode="None"/>
+                </TextBox.Background>
+            </TextBox>
+            <!-- Secret -->
+            <Label Content="Inworld API Secret" HorizontalAlignment="Center" Margin="0,276,0,0" VerticalAlignment="Top" Foreground="#FFE6E1C2" Padding="5,5,5,5" FontFamily="Aldine721 BT" Background="{x:Null}" FontSize="16"/>
+            <Button x:Name="APISecretEye" Content="" Style="{StaticResource HideStyle}" HorizontalAlignment="Left" Margin="161,310,0,0" VerticalAlignment="Top" Height="18" Width="20" BorderBrush="#00707070" Click="APISecretEye_Click" Grid.Column="1"/>
+            <PasswordBox x:Name="APISecretPassBox" HorizontalAlignment="Left" Margin="31,305,0,0" PasswordChanged="APISecretPassBox_PasswordChanged" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="324" BorderBrush="Transparent" Height="28" FontFamily="Aldine721 BT" SelectionBrush="#FFFFF227" Foreground="#FFFAFAFA" Padding="30,0,0,0" Grid.ColumnSpan="2">
+                <PasswordBox.Background>
+                    <ImageBrush ImageSource="pack://application:,,,/Resource/Images/UI/textinput_box.png" TileMode="None"/>
+                </PasswordBox.Background>
+            </PasswordBox>
+            <TextBox x:Name="APISecretBox" HorizontalAlignment="Left" Margin="31,305,0,0" TextWrapping="Wrap" Text="{Binding Secret, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="324" BorderBrush="Transparent" Height="28" FontFamily="Aldine721 BT" SelectionBrush="#FFFFF227" Foreground="#FFFAFAFA" Padding="30,0,0,0" Grid.ColumnSpan="2">
+                <TextBox.Background>
+                    <ImageBrush ImageSource="pack://application:,,,/Resource/Images/UI/textinput_box.png" TileMode="None"/>
+                </TextBox.Background>
+            </TextBox>
+
+            <Button Content="Save" Style="{StaticResource MainButtonStyle}" HorizontalAlignment="Left" Margin="97,366,0,0" VerticalAlignment="Top" Height="46" Width="206" Click="Button_Click" Foreground="#FFE6E1C2" FontFamily="Aldine721 BT" FontSize="16" Grid.ColumnSpan="2" BorderBrush="Transparent">
+            </Button>
+            <Grid Visibility="Hidden" x:Name="NotificationBar" Margin="45,438,45,76" Grid.ColumnSpan="2">
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Resource/Images/UI/notif.png"/>
+                </Grid.Background>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="7"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Image Width="20" Height="20" Source="/Resource/Images/UI/ico_tick.png" Grid.Row="1" />
+                <Label Content="Saved. Keep this app open and start Baldur's Gate 3" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FFDAD9BE" FontFamily="Crimson Text" RenderTransformOrigin="0.493,0.559" HorizontalContentAlignment="Center" Padding="5,-10,5,0"/>
+            </Grid>
+        </Grid>
+
+        <Image x:Name="ServerStatus" Source="/Resource/Images/UI/notrunning.png" Margin="10,5,350,505" Grid.Row="1" />
+    </Grid>
+</Window>
