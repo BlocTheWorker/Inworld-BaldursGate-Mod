@@ -1,5 +1,0 @@
-{
-    "RequiredVersion": 1,
-    "ModTable": "BG3Inworld",
-    "FeatureFlags": ["Lua"]
-}
